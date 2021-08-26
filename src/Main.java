@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.io.*;
 
 class Main extends JFrame {
     
@@ -9,7 +10,7 @@ class Main extends JFrame {
         
         Stage stage;
 
-        public App() {
+        public App() throws IOException {
             setPreferredSize(new Dimension(1024, 720));
             stage = new Stage();
             stage = StageReader.readStage("data/stage1.rvb");
@@ -22,12 +23,12 @@ class Main extends JFrame {
 
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         Main window = new Main();
         window.run();
     }
 
-    private Main() {
+    private Main() throws IOException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         App canvas = new App();
         this.setContentPane(canvas);

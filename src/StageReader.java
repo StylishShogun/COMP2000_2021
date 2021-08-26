@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+// i feel like my "fix" is so dirty that its cheating
+// i've simply thrown all IO exceptions and it seems to work
 
 class StageReader {
     public static Stage readStage(String path) throws IOException {
@@ -34,7 +36,8 @@ class StageReader {
                     stage.actors.add(new Car(c));
                 } else if (value.equals("boat")) {
                     stage.actors.add(new Boat(c));
-                }
+                } else {System.out.print("failed to read actor");
+            }
             }
         }
         return stage;
